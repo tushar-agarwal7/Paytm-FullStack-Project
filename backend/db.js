@@ -1,4 +1,5 @@
 const mongoose=require("mongoose");
+mongoose.connect('mongodb://127.0.0.1:27017/paytm');
 
 
 const userSchema=mongoose.Schema({
@@ -8,8 +9,8 @@ const userSchema=mongoose.Schema({
         unique: true,
         trim: true,
         lowercase: true,
-        minLength: 3,
-        maxLength: 30
+        minlength: 3,
+        maxlength: 30
     },
     password: {
         type: String,
@@ -36,3 +37,4 @@ const User=mongoose.model("User",userSchema);
 module.exports={
     User
 }
+console.log("database Connected")
