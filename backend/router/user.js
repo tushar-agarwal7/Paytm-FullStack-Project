@@ -64,7 +64,7 @@ const signinBody=z.object({
     password:z.string(),
 })
 
-router.post("/signin", async(req,res)=>{
+router.post("/signin",authMiddleware, async(req,res)=>{
       const {success}=signinBody.safeParse(req.body);
       if(!success){
         res.status(411).json({
@@ -89,6 +89,57 @@ router.post("/signin", async(req,res)=>{
     msg:"Error while logging in"
    })
 
+})
+
+
+
+//when user want to change their name, password then this will use
+const updateBody=z.object({
+  password:z.string(),
+  firstName:z.string(),
+  lastName:z.string()
+})
+
+router.put("/",authMiddleware,async(req,res)=>{
+   const {success}=updateBody.safeParse(req.body);
+  if(!success){
+      res.status(411).json({
+          msg:"Error while updating information"
+      })
+  }
+  await User.updateOne({_id:req.userId},req.body)
+
+  res.json({
+      msg:"Updated successfully"
+  })
+})
+
+
+//for search
+router.get("/bulk",async(req,res)=>{
+  const filter=req.query.filter || " ";
+
+  const users=await User.find({
+      $or:[{
+          firstName:{
+              "$regex": filter
+         }
+  },
+  {
+      lastName:{
+           "$regex": filter
+      }
+  }]
+})
+res.json({
+  user:users.map(user=>({
+  username:user.username,
+  firstName:user.firstName,
+  lastName:user.lastName,
+  _id:user._id
+
+     }))
+  })
 })
 
 module.exports=router;
