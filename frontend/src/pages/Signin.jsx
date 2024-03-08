@@ -6,7 +6,7 @@ import SubHeading from "../components/SubHeading";
 
 export default function Signin(){
     return(
-        <div  className="flex justify-center h-screen bg-slate-300">
+        <div  className="flex justify-center h-screen bg-gray-100">
             <div className="flex justify-center flex-col">
                 <div className="bg-white text-center rounded-lg w-100  p-10 h-max px-4">
                 <Heading label={"Sign In"}/>
