@@ -4,7 +4,7 @@ const jwt=require("jsonwebtoken");
 const z=require("zod")
 const {User, Account}=require("../db")
 const {JWT_SECRET}=require("../config");
-const { authMiddleware } = require("./middleware");
+const { authMiddleware } = require("../middleware");
 
 
 //signup
