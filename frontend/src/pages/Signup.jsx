@@ -36,11 +36,13 @@ export default function Signup(){
           }} placeholder={"12345678"} label={"Password"}/>
 
           <Button onClick={async()=>{
+    
         const res=  await axios.post("http://localhost:3000/api/v1/user/signup",{
                 username,password,firstName,lastName
             })
+         
             localStorage.setItem("token",res.data.token)
-            naviagate("/dashboard")
+            naviagate("/")
             
           }} label={"Sign up"}/>
           <BottomWarning label={"Already have an account?"} link={"Sign in"} to={"/signin"}/>

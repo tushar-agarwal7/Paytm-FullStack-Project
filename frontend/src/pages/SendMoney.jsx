@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
-import { useSearchParams } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import CircularProgress from '@mui/material/CircularProgress';
 export default function SendMoney() {
     const [searchParams] = useSearchParams()
@@ -8,6 +8,7 @@ export default function SendMoney() {
     const name = searchParams.get("name")
     const [amount,setAmount]=useState(0)
     const [isPay,setIsPay]=useState(false)
+    const navigate=useNavigate()
 
        const [balance,setBalance]=useState(0)
     axios.get("http://localhost:3000/api/v1/account/balance" ,{
@@ -67,9 +68,13 @@ export default function SendMoney() {
                             if(amount>balance){
                                 alert("insufficient balance")
                             }
+                        
+                                navigate("/")
+                                alert("Payment done")
+                            
                             
                         }} class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white">
-                         {isPay?"Payment done":"Transfer"}
+                         {isPay?"Payment done":"Transfer" }
                         </button>
                     </div>
                 </div>

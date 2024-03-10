@@ -34,7 +34,7 @@ export default  function Users(){
 
 function User({user}){
     const navigate = useNavigate();
-    return <div className="flex justify-between bg-slate-50 mt-4 ml-4 mr-4">
+    return  <div className="flex justify-between bg-slate-50 mt-4 ml-4 mr-4">
         <div className="flex">
             <div className="rounded-full h-12 w-12 bg-gray-400  text-white flex justify-center mt-1 mr-2">
                 <div className="flex flex-col justify-center h-full text-xl">

@@ -27,7 +27,7 @@ export default function Signin(){
                     axios.post("http://localhost:3000/api/v1/user/signin",{
                         username,password
                     })
-                    navigate("/dashboard")
+                    navigate("/")
                 }} label={"Sign In"}/>
                 <BottomWarning label={"Don't have an account? "} link={"Sign Up"} to={"/signup"}/>
             </div>

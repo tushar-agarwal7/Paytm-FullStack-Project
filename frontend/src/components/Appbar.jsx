@@ -5,6 +5,7 @@ export default  function Appbar(){
                <img src="https://companieslogo.com/img/orig/PAYTM.NS_BIG.D-d7c46d27.png?t=1636379788" alt="" className="h-8" /> 
             </div>
             <div className="flex">
+               
                 <div className="flex justify-center flex-col h-full font-medium mr-4">Hello</div>
                 <div className="rounded-full h-12 w-12 bg-gray-400 flex justify-center mt-4 mr-4">
                 <div  className="flex justify-center ml-4 mt-2 mr-4 text-lg">U</div>
